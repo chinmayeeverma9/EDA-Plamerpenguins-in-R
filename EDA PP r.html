@@ -1,0 +1,130 @@
+# Installing the Packages
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("skimr")
+install.packages("dplyr")
+install.packages("palmerpenguins")
+
+# calling the Libraries
+library(tidyverse)
+library(ggplot2)
+library(skimr)
+library(dplyr)
+library(palmerpenguins)
+
+# Dataloading & Exploration
+penguins <- palmerpenguins::penguins
+
+count(penguins)
+head(penguins)
+
+# Statical Analysis
+*Statistical Summary of Penguin's Bill depth (in mm) :
+
+Mean <- mean(penguins$bill_depth_mm,na.rm = TRUE)
+Median <- median(penguins$bill_depth_mm, na.rm =  TRUE)
+stdev <- sd(penguins$bill_depth_mm, na.rm = TRUE)
+maximum <- max(penguins$bill_depth_mm, na.rm = TRUE)
+minimum <- min(penguins$bill_depth_mm, na.rm = TRUE)
+print(paste("Mean of Penguin's Bill Depth:",Mean))
+print(paste("Median of Penguin's Bill Depth:",Median))
+print(paste("Stndard Deviation of Penguin's Bill Depth:",stdev))
+print(paste("Maximum of Penguin's Bill Depth:",maximum))
+print(paste("Minimum of Penguin's Bill Depth:",minimum))
+
+
+*Statistical Summary of Penguin's Bill length (in mm) 
+
+Mean <- mean(penguins$bill_length_mm,na.rm = TRUE)
+Median <- median(penguins$bill_length_mm, na.rm =  TRUE)
+stdev <- sd(penguins$bill_length_mm, na.rm = TRUE)
+maximum <- max(penguins$bill_length_mm, na.rm = TRUE)
+minimum <- min(penguins$bill_length_mm, na.rm = TRUE)
+print(paste("Mean of Penguin's Bill Length:",Mean))
+print(paste("Median of Penguin's Bill Length:",Median))
+print(paste("Stndard Deviation of Penguin's Bill Length:",stdev))
+print(paste("Maximum of Penguin's Bill Length:",maximum))
+print(paste("Minimum of Penguin's Bill Length:",minimum))
+
+*Statistical Summary of Penguin's Body Mass (in g):
+
+Mean <- mean(penguins$body_mass_g,na.rm = TRUE)
+Median <- median(penguins$body_mass_g, na.rm =  TRUE)
+stdev <- sd(penguins$body_mass_g, na.rm = TRUE)
+maximum <- max(penguins$body_mass_g, na.rm = TRUE)
+minimum <- min(penguins$body_mass_g, na.rm = TRUE)
+print(paste("Mean of Penguin's Body Mass:",Mean))
+print(paste("Median of Penguin's Body Mass:",Median))
+print(paste("Stndard Deviation of Penguin's Body Mass:",stdev))
+print(paste("Maximum of Penguin's Body Mass:",maximum))
+print(paste("Minimum of Penguin's Body Mass:",minimum))
+
+
+# Grouped Summaries
+
+*Summary of Penguin's Bill Length : mean, median, standard deviation, maximum and minimum
+
+bl_mean <- penguins %>% group_by(species) %>% summarise(BillLengthMean = mean(bill_length_mm,na.rm =  TRUE),.groups = 'drop')
+bl_median <- penguins %>% group_by(species) %>% summarise(BillLengthedian = median(bill_length_mm,na.rm =  TRUE),.groups = 'drop')
+bl_sd <- penguins %>% group_by(species) %>% summarise(BillLengthStddev = sd(bill_length_mm,na.rm =  TRUE),.groups = 'drop')
+bl_max <- penguins %>% group_by(species) %>% summarise(BillLengthMax = max(bill_length_mm,na.rm =  TRUE),.groups = 'drop')
+bl_min <- penguins %>% group_by(species) %>% summarise(BillLengthMin = min(bill_length_mm,na.rm =  TRUE),.groups = 'drop')
+print(bl_mean)
+print(bl_median)
+print(bl_sd)
+print(bl_max)
+print(bl_min)
+
+*Summary of Penguin's Bill Depth : mean, median, standard deviation, maximum and minimum
+
+bd_mean <- penguins %>% group_by(species) %>% summarise(BillDepthMean = mean(bill_depth_mm,na.rm =  TRUE),.groups = 'drop')
+bd_median <- penguins %>% group_by(species) %>% summarise(BillDepthMedian = median(bill_depth_mm,na.rm =  TRUE),.groups = 'drop')
+bd_sd <- penguins %>% group_by(species) %>% summarise(BillDepthStddev = sd(bill_depth_mm,na.rm =  TRUE),.groups = 'drop')
+bd_max <- penguins %>% group_by(species) %>% summarise(BillDepthMax = max(bill_depth_mm,na.rm =  TRUE),.groups = 'drop')
+bd_min <- penguins %>% group_by(species) %>% summarise(BillDepthMin = min(bill_depth_mm,na.rm =  TRUE),.groups = 'drop')
+print(bd_mean)
+print(bd_median)
+print(bd_sd)
+print(bd_max)
+print(bd_min)
+
+*Summary of Penguin's Flipper Length : mean, median, standard deviation, maximum and minimum
+
+fl_mean <- penguins %>% group_by(species) %>% summarise(FlipperLengthMean = mean(flipper_length_mm,na.rm =  TRUE),.groups = 'drop')
+fl_median <- penguins %>% group_by(species) %>% summarise(FlipperLengthMedian = median(flipper_length_mm,na.rm =  TRUE),.groups = 'drop')
+fl_sd <- penguins %>% group_by(species) %>% summarise(FlipperLengthStddev = sd(flipper_length_mm,na.rm =  TRUE),.groups = 'drop')
+fl_max <- penguins %>% group_by(species) %>% summarise(FlipperLengthMax = max(flipper_length_mm,na.rm =  TRUE),.groups = 'drop')
+fl_min <- penguins %>% group_by(species) %>% summarise(FlipperLengthMin = min(flipper_length_mm,na.rm =  TRUE),.groups = 'drop')
+print(fl_mean)
+print(fl_median)
+print(fl_sd)
+print(fl_max)
+print(fl_min)
+
+
+*Summary of Penguin's Body Mass : mean, median, standard deviation, maximum and minimum
+
+bm_mean <- penguins %>% group_by(species) %>% summarise(BodyMassMean = mean(body_mass_g,na.rm =  TRUE),.groups = 'drop')
+bm_median <- penguins %>% group_by(species) %>% summarise(BodyMassMedian = median(body_mass_g,na.rm =  TRUE),.groups = 'drop')
+bm_sd <- penguins %>% group_by(species) %>% summarise(BodyMassStddev = sd(body_mass_g,na.rm =  TRUE),.groups = 'drop')
+bm_max <- penguins %>% group_by(species) %>% summarise(BodyMassMax = max(body_mass_g,na.rm =  TRUE),.groups = 'drop')
+bm_min <- penguins %>% group_by(species) %>% summarise(BodyMassMin = min(body_mass_g,na.rm =  TRUE),.groups = 'drop')
+print(bm_mean)
+print(bm_median)
+print(bm_sd)
+print(bm_max)
+print(bm_min)
+
+
+# Datavisulisation 
+
+
+ggplot(data = penguins) + geom_point(mapping = aes(x = bill_depth_mm, y = bill_length_mm,colour = species, shape = sex, na.rm = TRUE)) + labs( title = "Scatter plot for Penguin's Bill Length Vs Depth", x = "Bill Depth", y = "Bill Lenght")
+
+
+ggplot(data=penguins)+ geom_point(mapping = aes(x = species, y = bill_depth_mm, size = flipper_length_mm),position = position_jitter(width = 0.3, height = 1)) + labs(title = "Scatter Plot for Species vs Bill Depth", x = "Species", y = "Bill Depth")
+
+ggplot(data=penguins)+ geom_point(mapping = aes(x = species, y = flipper_length_mm,alpha=island)) + labs (title = "Scatter Plot for Species vs Flipper Length", x = "Species", y = "Fliper Length")
+
+ggplot(data=penguins)+ geom_point(mapping = aes(x = species, y = body_mass_g, position = "jitter"))+ labs (title = "Scatter Plot for Species vs Body Mass", x = "Species", y = "Body Mass")
+
